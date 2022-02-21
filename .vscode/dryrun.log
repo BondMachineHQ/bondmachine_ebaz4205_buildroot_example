@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/giulio/Progetti/buildroot/bondmachine_ebaz4205_buildroot'
+make: Leaving directory '/home/giulio/Progetti/buildroot/bondmachine_ebaz4205_buildroot'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+ 
