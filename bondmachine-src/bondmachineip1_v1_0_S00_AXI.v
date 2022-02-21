@@ -1,7 +1,7 @@
 
 `timescale 1 ns / 1 ps
 
-	module bondmachine_v1_0_S00_AXI #
+	module bondmachineip1_v1_0_S00_AXI #
 	(
 		// Users to add parameters here
 
@@ -220,7 +220,7 @@
 	begin
 	  if ( S_AXI_ARESETN == 1'b0 )
 	    begin
-	      slv_reg0 <= 0;
+	      //slv_reg0 <= 0;
 	      slv_reg1 <= 0;
 	      slv_reg2 <= 0;
 	      slv_reg3 <= 0;
@@ -234,7 +234,7 @@
 	              if ( S_AXI_WSTRB[byte_index] == 1 ) begin
 	                // Respective byte enables are asserted as per write strobes 
 	                // Slave register 0
-	                slv_reg0[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
+	                //slv_reg0[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
 	              end  
 	          2'h1:
 	            for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
@@ -258,7 +258,7 @@
 	                slv_reg3[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
 	              end  
 	          default : begin
-	                      slv_reg0 <= slv_reg0;
+	                      //slv_reg0 <= slv_reg0;
 	                      slv_reg1 <= slv_reg1;
 	                      slv_reg2 <= slv_reg2;
 	                      slv_reg3 <= slv_reg3;
@@ -398,7 +398,18 @@
 	end    
 
 	// Add user logic here
-
+	wire [7:0] i0;
+	wire [7:0] o0;
+	
+	always @( posedge S_AXI_ACLK )
+	begin
+	   slv_reg0 <= {24'b0 , o0 };
+	end
+	
+    bondmachine bondmachine_inst(S_AXI_ACLK, 0, i0, o0);
+    
+    assign i0 = slv_reg1[7:0];
+    
 	// User logic ends
 
 	endmodule

@@ -53,9 +53,9 @@ Now you can close Vivado and free up a lot of RAM!
 It's time to generate all the DTS's file necessary to generate the device tree blob file. This file is "compiled" by a special compiler which produces the correctly binary that can be interpreted by U-boot and Linux. </br>
 Open a CLI and clone the xilinx device tree repository.
 ````
-git clone https://github.com/Xilinx/device-tree-xlnx</br>
-cd device-tree-xlnx</br>
-git checkout *xilinx-v201X.X*</br>
+git clone https://github.com/Xilinx/device-tree-xlnx
+cd device-tree-xlnx
+git checkout *xilinx-v201X.X*
 ````
 and source Xilinx Tools (source /path/to/tools/Vivado/2020.2/settings64.sh).
 Open the xsct console by typing *xsct* and then type the following commands:
